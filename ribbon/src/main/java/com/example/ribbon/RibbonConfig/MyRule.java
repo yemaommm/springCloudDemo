@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * 自定义负载均衡规则，实现cloose方法
+ * 同样适用 @EnableFeignClients
  */
 public class MyRule implements IRule {
 
