@@ -16,6 +16,12 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class RibbonApplication {
 
+	/**
+	 * LoadBalanced原理：
+	 *      通过实现RestTemplate拦截器实现（ClientHttpRequestInterceptor, HttpRequest）
+	 *      https://my.oschina.net/JavaLaw/blog/1553024
+	 * @return
+	 */
 	@Bean(name = "restTemplate")
 	@LoadBalanced
 	public RestTemplate restTemplate() {
