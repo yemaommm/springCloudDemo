@@ -2,11 +2,13 @@ package com.example.ribbon;
 
 import com.example.ribbon.service.test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,7 @@ import java.util.Map;
 @EnableAutoConfiguration
 @EnableFeignClients
 @RestController
+@RefreshScope //注解@RefreshScope指示Config客户端在服务器配置改变时，也刷新注入的属性值
 public class RibbonApplication {
 
 	/**
@@ -54,6 +57,14 @@ public class RibbonApplication {
     @RequestMapping(value = "/object")
     public Map<String, Object> object(){
         return hs.object();
+    }
+
+    @Value("${test.name}")
+    private String testName;
+
+    @RequestMapping(value = "/testConfig")
+    public String testConfig(){
+        return "test.name: " + testName;
     }
 
 	public static void main(String[] args) {

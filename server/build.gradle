@@ -39,6 +39,7 @@ dependencies {
 //	compile('org.springframework.cloud:spring-cloud-dependencies')
 //	compile('org.springframework.cloud:spring-cloud-starter-eureka')
 	compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
+	compile('org.springframework.cloud:spring-cloud-config-server')
 //	compile("org.springframework.cloud:spring-cloud-config-server")
 //    compile("org.springframework.cloud:spring-cloud-dependencies:Camden.SR6")
 
